@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         countView = (CountView) findViewById(R.id.count_view);
         countView.interpolator(new AccelerateDecelerateInterpolator())
+                .formatCommaSeparated()
                 .velocity(10)
                 .maxDuration(3000);
 

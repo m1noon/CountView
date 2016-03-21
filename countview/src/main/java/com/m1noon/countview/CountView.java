@@ -5,6 +5,8 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.util.AttributeSet;
 
+import java.text.DecimalFormat;
+
 /**
  * View to display the number with the animation of count up or down.
  * This view is not available the layout value such as 'gravity' in order to focus on the performance of the drawing.
@@ -21,6 +23,7 @@ public class CountView extends LabelView {
     private int currentValue;
     private int maxDuration = Integer.MAX_VALUE;
     private int velocity = NO_VALUE;
+    private DecimalFormat decimalFormat;
 
     public CountView(Context context) {
         this(context, null);
@@ -88,6 +91,40 @@ public class CountView extends LabelView {
      */
     public CountView interpolator(TimeInterpolator interpolator) {
         countAnimator.setInterpolator(interpolator);
+        return this;
+    }
+
+    /**
+     * Set a comma-separated format.
+     *
+     * @return
+     */
+    public CountView formatCommaSeparated() {
+        return format("###,###");
+    }
+
+    /**
+     * Set the pattern to format the number.
+     *
+     * @param decimalPattern
+     * @return
+     */
+    public CountView format(String decimalPattern) {
+        if (decimalFormat == null) {
+            decimalFormat = new DecimalFormat();
+        }
+        decimalFormat.applyPattern(decimalPattern);
+        return this;
+    }
+
+    /**
+     * Set the formatter to format the number.
+     *
+     * @param format
+     * @return
+     */
+    public CountView format(DecimalFormat format) {
+        this.decimalFormat = format;
         return this;
     }
 
@@ -160,6 +197,10 @@ public class CountView extends LabelView {
 
     private void draw(int value) {
         currentValue = value;
-        setText(String.valueOf(currentValue));
+        if (decimalFormat == null) {
+            setText(String.valueOf(currentValue));
+        } else {
+            setText(decimalFormat.format(currentValue));
+        }
     }
 }
