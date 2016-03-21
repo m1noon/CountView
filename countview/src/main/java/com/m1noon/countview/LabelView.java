@@ -12,10 +12,10 @@ import android.view.View;
 /**
  * This is a lightweight process than {@link android.widget.TextView}.
  * This view is not available the layout value such as 'gravity' in order to focus on the performance of the drawing.
- * <p/>
+ * <p>
  * This is based on the class of the android-apidemos.
- * <p/>
  * see https://github.com/appium/android-apidemos/blob/master/src/io/appium/android/apis/view/LabelView.java
+ * </p>
  */
 public class LabelView extends View {
     private Paint textPaint;

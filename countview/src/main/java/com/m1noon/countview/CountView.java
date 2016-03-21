@@ -10,8 +10,6 @@ import java.text.DecimalFormat;
 /**
  * View to display the number with the animation of count up or down.
  * This view is not available the layout value such as 'gravity' in order to focus on the performance of the drawing.
- * <p/>
- * Created by m1noon on 16/03/21.
  */
 public class CountView extends LabelView {
 
@@ -49,7 +47,7 @@ public class CountView extends LabelView {
      * Set the velocity (num/sec) of the count animation.
      *
      * @param velocity velocity of the count animation. Unit is the num / sec.
-     * @return
+     * @return CountView
      */
     public CountView velocity(int velocity) {
         if (velocity <= 0) {
@@ -63,7 +61,7 @@ public class CountView extends LabelView {
      * Set the duration of the count animation.
      *
      * @param duration
-     * @return
+     * @return CountView
      */
     public CountView duration(int duration) {
         countAnimator.setDuration(duration);
@@ -76,7 +74,7 @@ public class CountView extends LabelView {
      * This is only used when you called {#velocity}.
      *
      * @param maxDuration
-     * @return
+     * @return CountView
      */
     public CountView maxDuration(int maxDuration) {
         this.maxDuration = maxDuration;
@@ -87,7 +85,7 @@ public class CountView extends LabelView {
      * Set the interpolator of the count animation.
      *
      * @param interpolator
-     * @return
+     * @return CountView
      */
     public CountView interpolator(TimeInterpolator interpolator) {
         countAnimator.setInterpolator(interpolator);
@@ -97,7 +95,7 @@ public class CountView extends LabelView {
     /**
      * Set a comma-separated format.
      *
-     * @return
+     * @return CountView
      */
     public CountView formatCommaSeparated() {
         return format("###,###");
@@ -107,7 +105,7 @@ public class CountView extends LabelView {
      * Set the pattern to format the number.
      *
      * @param decimalPattern
-     * @return
+     * @return CountView
      */
     public CountView format(String decimalPattern) {
         if (decimalFormat == null) {
@@ -121,7 +119,7 @@ public class CountView extends LabelView {
      * Set the formatter to format the number.
      *
      * @param format
-     * @return
+     * @return CountView
      */
     public CountView format(DecimalFormat format) {
         this.decimalFormat = format;
@@ -131,7 +129,7 @@ public class CountView extends LabelView {
     /**
      * Get value.
      *
-     * @return
+     * @return number
      */
     public int value() {
         return targetValue;
@@ -150,7 +148,7 @@ public class CountView extends LabelView {
     /**
      * Set the specified value.
      *
-     * @param value
+     * @param value   the value to set
      * @param animate set true if you need the count up (down) animation.
      */
     public void to(int value, boolean animate) {
@@ -167,7 +165,7 @@ public class CountView extends LabelView {
     /**
      * Count up the specified value.
      *
-     * @param count
+     * @param count value to count up
      */
     public void up(int count) {
         targetValue += count;
@@ -177,7 +175,7 @@ public class CountView extends LabelView {
     /**
      * Count down the specified value.
      *
-     * @param count
+     * @param count value to count down
      */
     public void down(int count) {
         targetValue -= count;
